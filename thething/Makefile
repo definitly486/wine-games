@@ -1,10 +1,10 @@
-PORTNAME=	valfaris
+PORTNAME=	thething
 PORTVERSION=	${CHROME_VER}
 CATEGORIES=	games 
-MASTER_SITES=	https://github.com/definitly486/wine-valfaris/releases/download/v0.0.1/
+MASTER_SITES=	https://github.com/definitly486/wine-games/releases/download/v0.0.1/
 DISTNAME=	valfaris
 PKGNAMEPREFIX=	wine-
-COMMENT=        game GOG version "Iron Meat"
+COMMENT=        game GOG version "The Thing: Remastered"
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
 
@@ -16,14 +16,15 @@ SRC_SUFX?=		.src${EXTRACT_SUFX}
 CHROME_VER?=	v0.0.1
 CHROME_BUILD?=	0b1
 
-SUB_FILES=	valfaris
+SUB_FILES=	thething
 
 
 do-install:
-	${INSTALL_SCRIPT} ${WRKDIR}/valfaris  ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_SCRIPT} ${WRKDIR}/thething  ${STAGEDIR}${PREFIX}/bin
 	mkdir -p                              ${STAGEDIR}${PREFIX}/share/GOG
-	cd ${WRKSRC}/ && ${CP} -r valfaris ${STAGEDIR}${PREFIX}/share/GOG
-	cp files/valfaris.desktop ${STAGEDIR}${PREFIX}/share/applications
+	cd ${WRKSRC}/ && ${CP} -r thething ${STAGEDIR}${PREFIX}/share/GOG
+ 	cp files/thething.png     ${STAGEDIR}${PREFIX}/share/pixmaps
+	cp files/thething.desktop ${STAGEDIR}${PREFIX}/share/applications
 
 
 .include <bsd.port.mk>
