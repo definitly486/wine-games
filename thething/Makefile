@@ -3,23 +3,23 @@ PORTVERSION=	${CHROME_VER}
 CATEGORIES=	games 
 MASTER_SITES=	https://github.com/definitly486/wine-games/releases/download/v0.0.1/ \
                 https://github.com/definitly486/wine-games/releases/download/v0.0.1.1/
+
 DISTFILES= 	thething.part_aa thething.part_ab
 PKGNAMEPREFIX=	wine-
 COMMENT=        game GOG version "The Thing: Remastered"
 NO_BUILD=	yes
 NO_WRKSUBDIR=	yes
 
-EXTRACT_SUFX?=		.tar.xz
-EXTRACT_SUFX_aarch64?=	.aarch64${EXTRACT_SUFX}
-EXTRACT_SUFX_amd64?=	.x86_64${EXTRACT_SUFX}
-SRC_SUFX?=		.src${EXTRACT_SUFX}
 
 CHROME_VER?=	v0.0.1
 CHROME_BUILD?=	0b1
 
 SUB_FILES=	thething
 
-pre-install:
+do-extract:
+
+	cat  ${DISTDIR}/thething.part_*  >  ${WRKSRC}/thething.tar.xz
+	tar -xvf ${WRKSRC}/thething.tar.xz  -C  ${WRKSRC}
 
 do-install:
 	${INSTALL_SCRIPT} ${WRKDIR}/thething  ${STAGEDIR}${PREFIX}/bin
